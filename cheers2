@@ -1,0 +1,49 @@
+puts "What is your name?"
+name = gets.upcase.chomp
+if name.empty?
+  puts "You must enter your name!"
+  exit
+else
+  puts "Your name is #{name}"
+  name.each_char do |char|
+    if char == 'A' || char == 'E' || char == 'F' || char == 'H' || char == 'I' || char == 'L' || char == 'M' || char == 'N' || char == 'O' || char == 'R' || char == 'S' || char == 'X'
+      puts 'Give me an... ' + char + '!'
+    else
+      puts 'Give me a...  ' + char + '!'
+    end
+  end
+end
+
+puts "So when is your birthday, #{name.downcase}? (dd/mm/yyyy)"
+require 'date'
+dateInput = gets.chomp
+date = Date.parse(dateInput)
+# puts date.yday
+today = Date.today
+# puts today.yday
+if date.leap?
+  date = Date.new(today.year, date.month, date.day)
+  # date.yday -= 1
+end
+if date.yday - today.yday > 0
+  dateDiff = date.yday - today.yday
+  puts "Awesome! Your birthday is in #{dateDiff} days! Happy birthday in advance!"
+elsif today.yday - date.yday > 0
+  dateDiff = today.yday - date.yday
+  puts "Awesome! Your birthday is in #{dateDiff} days! Have a happy birthday next year!"
+elsif today.yday - date.yday == 0
+  puts "TODAY IS YOUR BIRTHDAY!!! HOLY SHIT MAN!!!"
+
+end
+
+
+# if date - today > 0
+#   puts date
+#   puts today
+#   dateDiff = date - today
+#   puts "Awesome! Your birthday is in #{dateDiff} days! Happy birthday in advance!"
+# elsif today.yday - date.yday > 0
+#   dateDiff = today.yday - date.yday
+#   puts "Awesome! Your birthday is in #{dateDiff} days! Have a happy birthday next year!"
+# elsif today.yday - date.yday == 0
+#   puts "TODAY IS YOUR BIRTHDAY!!! HOLY SHIT MAN!!!"
